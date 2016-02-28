@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# this code is from kaggle word2vec tutorial
 
 import re
 import nltk
