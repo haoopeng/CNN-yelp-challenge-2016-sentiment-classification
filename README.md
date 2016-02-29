@@ -24,7 +24,7 @@ To do this, I first built a word index dictionary to represent each review as a 
 
 To use keras embedding layer, I feed in the review data as its word indexes representation(list of list of word indexed) as we did in `train_with_word2vec_embedding.ipynb`. I set the `embedding_dims` = 100. To be more specific, the shape of input data is (399850, 50), the output of embedding lay has a shape of (399850, 50, 100).
 
-## issues
+### Replication
 
 To replication my result, you should first download the data set and run `json-csv.py`. Then run `word2vec_model.py` to sample the 399850 reviews. You can continue to train a word2vec model on this sampled data set if you want to using word2vec embedding (It took me 4 mins to train).</br>
 
