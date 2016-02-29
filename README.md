@@ -1,4 +1,4 @@
-# yelp-challenge-2016-DeepLearning
+# CNN-yelp-challenge-2016-sentiment-classification
 This repository is the code for training a word level CNN for sentiment classification on [Yelp Challenge 2016 dataset](https://www.yelp.com/dataset_challenge). The code deals with the `yelp_academic_dataset_review.json` sub dataset, which has two columns namely "stars" and "text", and it contains about 5 million rows. The "stars" is the customers' rating from 1 to 5, the "text" field is the customers' review sentence. 
 
 To train a CNN for sentiment classfication, I set those review whose star is greater than 2 as positive review, otherwise as negative one. In order to train the model on my machine in reasonable time, I sampled 1 million rows from it and get 399850 after removing those with `null` values. The model achieved 77.91% accuracy on the validation set after 2 epoch, you can chech it in the `train_keras_embedding.ipynb` file.
