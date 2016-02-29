@@ -56,6 +56,7 @@ start = 1
 # padding = 0
 oov = 2
 
+
 data = pd.read_csv(
     'review_sub_399850.tsv', header=0, delimiter="\t", quoting=3, encoding='utf-8')
 print('get volcabulary...')
@@ -71,8 +72,8 @@ labels[labels <= 3] = 0
 labels[labels > 3] = 1
 
 pickle.dump((reviews_words_index, labels), open("399850by50reviews_words_index.pkl", 'wb'))
-
 # (reviews_words_index, labels) = pickle.load(open("399850by50reviews_word2vec_words_index.pkl", 'rb'))
+
 
 index = np.arange(reviews_words_index.shape[0])
 train_index, valid_index = train_test_split(

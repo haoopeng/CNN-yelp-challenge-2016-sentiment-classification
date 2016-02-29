@@ -91,7 +91,6 @@ index = np.arange(reviews_words.shape[0])
 train_index, valid_index = train_test_split(index, train_size = 0.8, random_state = 520)
 
 
-
 # In[43]:
 
 data_matrix = np.empty((reviews_words.shape[0], max_length, num_features))
@@ -116,6 +115,7 @@ del(labels, train_index, valid_index)
 print "start training model..."
 
 model = Sequential()
+
 # we add a Convolution1D, which will learn nb_filter
 # word group filters of size filter_length:
 
