@@ -26,7 +26,7 @@ To use keras embedding layer, I feed in the review data as its word indexes repr
 
 ### Replication
 
-To replication my result, you should first download the data set and run `json-csv.py`. Then run `word2vec_model.py` to sample the 399850 reviews. You can continue to train a word2vec model on this sampled data set if you want to using word2vec embedding (It took me 4 mins to train).</br>
+To replication my result, you should first download the data set and run `json-csv.py`. Then run `word2vec_model.py` to sample the 399850 reviews. You can continue to train a word2vec model on this sampled data set if you want to use word2vec embedding (It took my mac 4 mins to train).</br>
 
 Run `train_keras_embedding.py` to train a CNN using keras embedding layer. You can also run `train_with_word2vec_embedding.py` if you want (this requires a lot of computation resource). Make sure you get the sampled data set before you train the model (otherwise you can modify my code to train on 5 million reviews!).
 
