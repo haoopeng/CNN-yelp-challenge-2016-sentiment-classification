@@ -1,6 +1,6 @@
 
 '''
-train cnn mode for sentiment classification on yelp data set
+To train a CNN model for sentiment classification on yelp data set
 author: hao peng
 '''
 import pickle
