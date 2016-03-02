@@ -3,7 +3,7 @@ This repository is the code for training a word level CNN for sentiment classifi
 
 In order to train a CNN model on my machine in reasonable time, I sampled 1 million rows from it and ended with 399850 data point after removing `null` values. The `star` distribution of this subset is in table 1. I started from a binary classification task, and set those reviews whose star is greater than 2 as positive review, otherwise as negative one. The model achieved 77.91% accuracy on the validation set after 2 epoch, you can chech it in `train_keras_embedding.ipynb`.</br>
 
-| 1:     | 2     | 3     | 4      | 5      |
+| 1     | 2     | 3     | 4      | 5      |
 |-------|-------|-------|--------|--------|
 | 46906 | 34283 | 50678 | 106067 | 161916 |
 
