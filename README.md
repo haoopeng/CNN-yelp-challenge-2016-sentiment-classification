@@ -1,7 +1,9 @@
 # CNN-yelp-challenge-2016-sentiment-classification
 This repository is the code for training a word level CNN for sentiment classification on [Yelp Challenge 2016 dataset](https://www.yelp.com/dataset_challenge). The code deals with the `yelp_academic_dataset_review.json` sub dataset, which has two columns namely "stars" and "text", and it contains about 5 million rows. The "stars" is the customers' rating from 1 to 5, the "text" field is the customers' review sentence. 
 
-To train a CNN for sentiment classfication, I set those review whose star is greater than 2 as positive review, otherwise as negative one. In order to train the model on my machine in reasonable time, I sampled 1 million rows from it and get 399850 after removing those with `null` values. The model achieved 77.91% accuracy on the validation set after 2 epoch, you can chech it in the `train_keras_embedding.ipynb` file.
+To train a CNN for sentiment classfication, I set those review whose star is greater than 2 as positive review, otherwise as negative one. In order to train the model on my machine in reasonable time, I sampled 1 million rows from it and get 399850 after removing those with `null` values. The model achieved 77.91% accuracy on the validation set after 2 epoch, you can chech it in `train_keras_embedding.ipynb`.
+
+I also trained a multi-label classification model using the same architecture on the same data set. I got about 40% validation accuracy after 1 epoch training(it was intended for 2 epoch, but I don't have much time to train it). The result can be checked in `train_multi_class.ipynb`. You can encouraged to continue my work, please let me know if you get better result.
 
 ## Components
 This repository contains the following components:
@@ -10,6 +12,7 @@ This repository contains the following components:
 * `word2vec_model.ipynb` : It trains a Google's `word2vec` model on all the 1859888 sentences (processed from all the 399850 reviews using `Word2VecUtility.py`. Each word would be represented by a 300 dimensional vector. The final model named `300features_40minwords_10context` is written to disk.
 * `train_with_word2vec_embedding.ipynb`: This file trains a 1D CNN for sentiment classification using `word2vec` embedding. (the embedded data set has a shape of (399850, 50, 300), see `Details` sections). Unfortunately, my machine was not able to train it due to the memory size. So I turn to use Keras' built-in embedding layer instead.
 * `train_keras_embedding.ipynb`: This trains a model similar to the previous one. The only difference is on the embedding layer. The architecture of this model is : Embedding layer - Dropout - Convolution1D - MaxPooling1D - Full Connected layer - Dropout - Relu activation - Sigmoid (with binary cross entropy loss). Other model parameters are easy to be seen in this file. It is trained on 319880 samples and validated on 79970 samples. After 16 hours' training (2 epoch), I got train acc: 0.7791 and val_acc: 0.7761.
+* `train_multi_class.ipynb`: It trains a multi-label classification model(the labels are namely: 1, 2, 3, 4, 5 stars) with the same architecture on the same subset. I got about 40% accuracy after 1 epoch training.
 
 ## Details
 In word level CNN models, one main task is to get the embeded data set (thus you can perform convolution on it!). In this project, I tried two different apporaches for this. One is using `word2vec`, another is using keras' embedding layer.</br>
@@ -28,5 +31,6 @@ To use keras embedding layer, I feed in the review data as its word indexes repr
 
 To replication my result, you should first download the data set and run `json-csv.py`. Then run `word2vec_model.py` to sample the 399850 reviews. You can continue to train a word2vec model on this sampled data set if you want to use word2vec embedding (It took my mac 4 mins to train).</br>
 
-Run `train_keras_embedding.py` to train a CNN using keras embedding layer. You can also run `train_with_word2vec_embedding.py` if you want (this requires a lot of computation resource). Make sure you get the sampled data set before you train the model (otherwise you can modify my code to train on 5 million reviews!).
+Run `train_keras_embedding.py` to train a CNN using keras embedding layer. You can also run `train_with_word2vec_embedding.py` if you want (this requires a lot of computation resource). Make sure you get the sampled data set before you train the model (otherwise you can modify my code to train on 5 million reviews!).</br>
 
+If you would like to predict the exact star(out of 1, 2, 3, 4, 5) for each review, please try `train_multi_class.ipynb`.
