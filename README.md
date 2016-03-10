@@ -1,7 +1,11 @@
 # CNN-yelp-challenge-2016-sentiment-classification
-This repository is the code for training a word level CNN for sentiment classification task on [Yelp Challenge 2016 dataset](https://www.yelp.com/dataset_challenge). The code deals with the `yelp_academic_dataset_review.json` sub dataset, which has two columns namely "stars" and "text", and it contains about 5 million rows. The "stars" is the customers' rating from 1 to 5, the "text" field is the customers' review sentence.
+This repository trains a word level Convolutional Neural Network for sentiment classification task on [Yelp Challenge 2016 dataset](https://www.yelp.com/dataset_challenge).</br>
 
-In order to train a CNN model on my machine in reasonable time, I sampled 1 million rows from it and ended with 399850 data point after removing `null` values. The `star` distribution of this subset is in table 1. I started from a binary classification task, and set those reviews whose star is greater than 2 as positive review, otherwise as negative one. The model achieved 77.91% accuracy on the validation set after 2 epoch, you can chech it in `train_keras_embedding.ipynb`.</br>
+The code only uses the `yelp_academic_dataset_review.json` sub dataset from Yelp, which has two columns namely "stars" and "text". It contains about 5 million rows. The "stars" is the customers' rating ranging from 1 to 5, the "text" field is the customers' review sentence.</br>
+
+In order to train a CNN model on my machine in reasonable time, I sampled 1 million rows from it and ended with 399850 data point after removing `null` values. The `star` distribution of this subset is in table 1.</br>
+
+I first started on a binary classification task, and set those reviews whose star is greater than 2 as positive review, otherwise as negative one. The model achieved 77.91% accuracy on the validation set after 2 epoch, you can chech it in `train_keras_embedding.ipynb`.</br>
 
 | 1     | 2     | 3     | 4      | 5      |
 |-------|-------|-------|--------|--------|
