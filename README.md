@@ -3,7 +3,7 @@ This repository trains a word level Convolutional Neural Network for sentiment c
 
 The code only uses the `yelp_academic_dataset_review.json` sub dataset from Yelp, which has two columns namely "stars" and "text". It contains about 5 million rows. The "stars" is the customers' rating ranging from 1 to 5, the "text" field is the customers' review sentence.</br>
 
-In order to train a CNN model on my machine in reasonable time, I sampled 1 million rows from it and ended with 399850 data point after removing `null` values. The `star` distribution of this subset is in table 1.</br>
+In the first layer of my CNN architecture, I experimented with both `word2vec` and `kera` built-in embedding layer as the word embedding layer. In order to train a CNN model on my machine in reasonable time, I sampled 1 million rows from it and ended with 399850 data point after removing `null` values. The `star` distribution of this subset is in table 1.</br>
 
 I first started on a binary classification task, and set those reviews whose star is greater than 2 as positive review, otherwise as negative one. The model achieved 77.91% accuracy on the validation set after 2 epoch, you can chech it in `train_keras_embedding.ipynb`.</br>
 
