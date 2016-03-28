@@ -15,6 +15,10 @@ I first started on a binary classification task, and set those reviews whose sta
 
 I also trained a multi-label classification model using the same architecture on the same data set. I got about 40% validation accuracy after 1 epoch training(it was intended for 2 epoch, but I don't have much time to train it). The result can be checked in `train_multi_class.ipynb`. You can encouraged to continue my work, please let me know if you get better result.
 
+## Requirements
+* `Keras`: `pip install keras`
+* `Theano`: `pip install theano`
+
 ## Components
 This repository contains the following components:
 * `json-csv.py` : This is the data preprocessing file, it converts the `yelp_academic_dataset_review.json` file to a `review.csv` in the same directory. Notice that the `json` file is actually not a valid json file that you can load directly, but each its row is. So you have to process it line by line.
