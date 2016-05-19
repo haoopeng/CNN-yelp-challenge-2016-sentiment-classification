@@ -13,30 +13,27 @@ from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation, Flatten
 from keras.layers.embeddings import Embedding
 from keras.layers.convolutional import Convolution1D, MaxPooling1D
-
+from collections import defaultdict
 
 def get_volcabulary_and_list_words(data):
     reviews_words = []
-    volcabulary = []
-    for review in data["text"]:
-        review_words = Word2VecUtility.review_to_wordlist(
-            review, remove_stopwords=True)
+    volcabulary = defaultdict(int)
+    for review in data["message"]:
+        # review_words = Word2VecUtility.review_to_wordlist(review, remove_stopwords=True)
+        review_words = review.split()
         reviews_words.append(review_words)
         for word in review_words:
-            volcabulary.append(word)
-    volcabulary = set(volcabulary)
+            volcabulary[word] += 1
     return volcabulary, reviews_words
 
 def get_reviews_word_index(reviews_words, volcabulary, max_words, max_length):
-    word2index = {word: i for i, word in enumerate(volcabulary)}
-    # use w in volcabulary to limit index within max_words
-    reviews_words_index = [[start] + [(word2index[w] + index_from) for w in review] for review in reviews_words]
+    volcabulary = sorted(volcabulary.items(), key = lambda x : x[1], reverse = True)[:max_words]
+    word2index = {word[0]: i for i, word in enumerate(volcabulary)}
+    reviews_words_index = [[start] + [(word2index[w] + index_from) if w in word2index else oov for w in review] for review in reviews_words]
     # in word2vec embedding, use (i < max_words + index_from) because we need the exact index for each word, in order to map it to its vector. And then its max_words is 5003 instead of 5000.
-    reviews_words_index = [[i if (i < max_words) else oov for i in index] for index in reviews_words_index]
     # padding with 0, each review has max_length now.
     reviews_words_index = sequence.pad_sequences(reviews_words_index, maxlen=max_length, padding='post', truncating='post')
     return reviews_words_index
-
 
 # data processing para
 max_words = 5000
