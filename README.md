@@ -1,7 +1,7 @@
 # CNN-yelp-challenge-2016-sentiment-classification
-This repository trains a word level Convolutional Neural Network for sentiment classification task on [Yelp Challenge 2016 dataset](https://www.yelp.com/dataset_challenge).</br>
+This repository illustrates how to train a word level Convolutional Neural Network model for sentiment classification task on [Yelp Challenge 2016](https://www.yelp.com/dataset_challenge).</br>
 
-The code only uses the `yelp_academic_dataset_review.json` sub dataset from Yelp, which has two columns namely "stars" and "text". It contains about 5 million rows. The "stars" is the customers' rating ranging from 1 to 5, the "text" field is the customers' review sentence.</br>
+The model uses the `yelp_academic_dataset_review.json` dataset(5 million rows), which has two fields namely "stars" and "text". The "stars" is the customers' rating ranging from 1 to 5, the "text" field is the customers' raw review sentence.</br>
 
 In the first layer of my CNN architecture, I experimented with both `word2vec` and `keras` built-in embedding as the word embedding layer. In order to train a CNN model on my machine in reasonable time, I sampled 1 million datapoint and ended with 399850 samples after removing `null` values. The class distribution of this subset is in table 1.</br>
 
@@ -11,7 +11,7 @@ In the first layer of my CNN architecture, I experimented with both `word2vec` a
 |-------|-------|-------|--------|--------|
 | 11.7% | 8.6%  | 12.7% | 26.5%  | 40.5%  |
 
-At first, I started with a binary classification task, and set those reviews whose star is greater than 2 as positive reviews, otherwise as negative ones. The model achieved 77.91% accuracy on the validation set after 2 epoch, you can chech it in `train_keras_embedding.ipynb`.</br>
+At first, I started with a binary classification task. Review with star greater than 2 is treated as positive sample, otherwise as negative one. The model achieved 77.91% accuracy on the validation set after 2 epoch(see `train_keras_embedding.ipynb`).</br>
 
 I also trained a multi-label classification model using the same architecture on the same data set. I got about 40% validation accuracy after 1 epoch training (it was intended for 2 epoch, but I don't have much time to train it). The result can be checked in `train_multi_class.ipynb`. Feel free to continue my work, please let me know if you get better result. :-)
 
