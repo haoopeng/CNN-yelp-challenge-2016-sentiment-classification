@@ -11,9 +11,9 @@ In the first layer of my CNN architecture, I experimented with both `word2vec` a
 |-------|-------|-------|--------|--------|
 | 11.7% | 8.6%  | 12.7% | 26.5%  | 40.5%  |
 
-At first, I started with a binary classification task. Review with star greater than 2 is treated as positive sample, otherwise as negative one. The model achieved 77.91% accuracy on the validation set after 2 epoch(see `train_keras_embedding.ipynb`).</br>
+I started with a binary classification task. Review with star greater than 2 is treated as positive sample, otherwise as negative one. The model achieved 77.91% accuracy on the validation set after 2 epoch training(see `train_keras_embedding.ipynb`).</br>
 
-I also trained a multi-label classification model using the same architecture on the same data set. I got about 40% validation accuracy after 1 epoch training (it was intended for 2 epoch, but I don't have much time to train it). The result can be checked in `train_multi_class.ipynb`. Feel free to continue my work, please let me know if you get better result. :-)
+I also trained a multi-label classification model using the same architecture on the same data set. I got about 40% validation accuracy after 1 epoch training (it was intended for 2 epoch, but I don't have much time to train it). The result can be checked in `train_multi_class.ipynb`. Feel free to continue my work, let me know if you get better result!
 
 ## Requirements
 * `Keras`: `pip install keras`
