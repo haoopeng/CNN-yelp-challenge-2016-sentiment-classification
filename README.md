@@ -3,9 +3,7 @@ This repository trains a word level Convolutional Neural Network for sentiment c
 
 The code only uses the `yelp_academic_dataset_review.json` sub dataset from Yelp, which has two columns namely "stars" and "text". It contains about 5 million rows. The "stars" is the customers' rating ranging from 1 to 5, the "text" field is the customers' review sentence.</br>
 
-In the first layer of my CNN architecture, I experimented with both `word2vec` and `kera` built-in embedding as the word embedding layer. In order to train a CNN model on my machine in reasonable time, I sampled 1 million rows from it and ended with 399850 data point after removing `null` values. The `star` distribution of this subset is in table 1.</br>
-
-I first started on a binary classification task, and set those reviews whose star is greater than 2 as positive review, otherwise as negative one. The model achieved 77.91% accuracy on the validation set after 2 epoch, you can chech it in `train_keras_embedding.ipynb`.</br>
+In the first layer of my CNN architecture, I experimented with both `word2vec` and `keras` built-in embedding as the word embedding layer. In order to train a CNN model on my machine in reasonable time, I sampled 1 million datapoint and ended with 399850 samples after removing `null` values. The class distribution of this subset is in table 1.</br>
 
 | 1     | 2     | 3     | 4      | 5      |
 |-------|-------|-------|--------|--------|
@@ -13,7 +11,9 @@ I first started on a binary classification task, and set those reviews whose sta
 |-------|-------|-------|--------|--------|
 | 11.7% | 8.6%  | 12.7% | 26.5%  | 40.5%  |
 
-I also trained a multi-label classification model using the same architecture on the same data set. I got about 40% validation accuracy after 1 epoch training(it was intended for 2 epoch, but I don't have much time to train it). The result can be checked in `train_multi_class.ipynb`. You can encouraged to continue my work, please let me know if you get better result.
+At first, I started with a binary classification task, and set those reviews whose star is greater than 2 as positive reviews, otherwise as negative ones. The model achieved 77.91% accuracy on the validation set after 2 epoch, you can chech it in `train_keras_embedding.ipynb`.</br>
+
+I also trained a multi-label classification model using the same architecture on the same data set. I got about 40% validation accuracy after 1 epoch training (it was intended for 2 epoch, but I don't have much time to train it). The result can be checked in `train_multi_class.ipynb`. Feel free to continue my work, please let me know if you get better result. :-)
 
 ## Requirements
 * `Keras`: `pip install keras`
