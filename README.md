@@ -15,8 +15,8 @@ I started with a binary classification task. Review with star greater than 2 is 
 I also trained a multi-label classification model using the same architecture on the same data set. It got ~40% accuracy on testset after 1 epoch training. The result can be checked in `train_multi_class.ipynb`. Feel free to continue my work, let me know if you get better result!
 
 ## Requirements
-* `Keras`: `pip install keras`
-* `Theano`: `pip install theano`
+* `Keras`: `pip install keras` (1.0.3)
+* `Theano`: `pip install theano` (0.8.0.dev0)
 
 ## Components
 This repository contains the following components:
