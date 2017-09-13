@@ -4,8 +4,8 @@
 import json
 import csv
 
-outfile = open("review.csv", 'wb')
-sfile = csv.writer(outfile, delimiter =",", quoting=csv.QUOTE_MINIMAL)
+outfile = open("review.tsv", 'wb')
+sfile = csv.writer(outfile, delimiter ="\t", quoting=csv.QUOTE_MINIMAL)
 sfile.writerow(['stars', 'text'])
 
 with open('yelp_academic_dataset_review.json') as f:
